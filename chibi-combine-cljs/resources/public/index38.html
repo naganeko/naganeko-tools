@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Google Tag Manager -->
+
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-5N9JVDH');</script>
+
+  <!-- End Google Tag Manager -->
+
+  <link href="css/style.css?ts=54C7A42D-80CC-47AC-A8CC-D04ED28865DB" rel="stylesheet" type="text/css">
+  <link href="css/spin.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!--  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">-->
+
+  <style>
+
+  </style>
+  <title>chibi-combine 0.1.2.0-sp38</title>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121789630-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-121789630-2');
+
+    var test_PMA_base = true;
+    var test_PMA_Texture = false;
+    var test_PMA_glstore = true;
+  </script>
+
+  <!--  spine 3.8 -->
+  <script src="js2/pixi.js?ts=0.1.2.0-sp38"></script>
+  <script src="js2/pixi-spine.js?ts=0.1.2.0-sp38"></script>
+  <!--  <script src="js2/pixi-spine-debug.js"></script>-->
+  <!--  <script src="https://cdn.jsdelivr.net/npm/pixi-spine@1.5.23/bin/pixi-spine.js"></script>-->
+  <script src="https://cdn.jsdelivr.net/npm/pixi-filters@3.0.3/dist/pixi-filters.js"
+          integrity="sha256-glKKYYqZKNetXzDxJX+1rWdQw6ou/JBBXRWj2I1nNew=" crossorigin="anonymous"></script>
+  <!--  not tested with layers -->
+  <!--  <script src="js/pixi-layers.js"></script>-->
+  <script src="https://cdn.jsdelivr.net/npm/pixi-layers@0.2.3/dist/pixi-layers.min.js"></script>
+
+<!--  <script src="js/skb.js"></script>-->
+  <script src="js/TDoll.js"></script>
+  <script src="js/TDGroup.js"></script>
+<!--  <script src="js/gif.js"></script>-->
+  <script src="js/FileSaver.js"></script>
+<!--  <script src="js/apngbuilder.js"></script>-->
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!--  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>-->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+          integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+          crossorigin="anonymous"></script>
+  <script src="js/spin.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.2.2/jszip.min.js"></script>
+  <script src="js/w3.js"></script>
+<!--  <script src="https://cdn.jsdelivr.net/npm/ag-psd@11.6.0/dist/bundle.min.js"></script>-->
+<!--  <script src="https://cdn.jsdelivr.net/npm/jsonpath@1.1.1/jsonpath.min.js" integrity="sha256-BNhHyoJuwbspDJateHH9q0Htd8ytx2RMuGT9J2VHN8k=" crossorigin="anonymous"></script>-->
+
+
+</head>
+<body>
+
+
+<div id="main" style="text-align: center;">
+  <h3>
+    (chibi-combine sp & more) ; 0.1.2.0-sp38
+  </h3>
+
+  <div style="text-align: center;display: inline-block;font-size:70%;">
+    <div style="">
+      <b>
+        NOTICE お知らせ :
+        Do not ask me how to get Spine data. Spineデータの取得に関してのお問合わせは承りません。<br/>
+        This website is made for personal hobby use. This website are provided 'as is'
+        and your use of this website is entirely at your own risk. <br/>
+        本ウェブサイトは個人のホビー用であり、何も保証できません。本ウェブサイトの利用に起因するかもしれない如何なる損害や不具合等は利用者の責任です。
+      </b>
+    </div>
+  </div>
+
+  <table align="center" cellspacing="5" cellpadding="5"
+         border="1"
+  >
+
+    <tr>
+      <td colspan="3">Spine</td>
+<!--      <td></td>-->
+<!--      <td>Animated Image</td>-->
+    </tr>
+    <tr valign="middle">
+      <td class="sagyoudai" colspan="3">
+        <div class="file-drop-area" title="drag and drop a chibi file set">
+          <div id="content" style="display:inline-block"></div>
+        </div>
+        <div style="display: none;">
+          <canvas id='cvs_shot' width='400' height='400' style="display: none;"></canvas>
+          <img src="img/blank.png" id="png_holder" width="32" height="32" style="display: none;"/>
+        </div>
+      </td>
+
+    </tr>
+    <tr>
+
+      <td style="min-width:48%; margin:5px;padding:5px;" align="center" class="input-panel">
+        <div>
+          <input type="file" id="fileElem" multiple accept=".png, .skel, .atlas, .json, .txt, .bytes" style="display:none">
+          <div class="gifex-input">
+            <!--
+                        <button id="resetSkelBtn" style="background: coral;">
+                          Clear
+                        </button>
+                        &nbsp;
+                        &nbsp;
+                        &nbsp;
+            -->
+
+            <button id="fileSelect" title="drag and drop a chibi file set to the checkboard">
+              Add skeleton
+            </button>
+
+            &nbsp;
+            <button id="reloadBtn">
+              &nbsp;  Reload &nbsp;
+            </button>
+          <!--  <span title="Premultipled-Alpha">
+            <input type="checkbox" id="pma_chk" value="true"
+                   checked="checked"
+                   title="Premultiplied Alpha"
+            />un-PMA<a style="font-size:50%;padding-left:0px;margin-left:0px;" text="what's this?" target="_spine" href="http://esotericsoftware.com/forum/Premultiplied-Alpha-Guide-3132">(?)</a>
+            </span>-->
+
+          </div>
+        </div>
+
+        <hr/>
+
+        <div class="gifex-input">
+          Duration: <span id="duration">0.0</span> seconds
+
+        </div>
+
+        <div class="gifex-input">
+          <input id="currentTime_r" type="range" min="0" max="0" step="0.001"
+                 style="width:70%;display:inline;margin:0px 5px 10px 5px;"/>
+          <input style="width: 20%;" type="number" id="currentTime_t" value="0" min="0" max="0"
+                 step="0.001" readonly="readonly"/>
+
+        </div>
+
+        <div class="gifex-input">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+
+<!--              <td>-->
+              <td width="55%" valign="middle">
+
+                <select id="dousa" style="text-align: center;width: 100%;">
+                  <option value="">---------</option>
+                </select>
+
+                <br/>
+                <br/>
+              </td>
+              <td valign="middle" nowrap="" >
+
+                <button id="playBtn">Play</button>
+                <button id="stopBtn">Stop</button>
+<!--                <button id="flipxBtn">FlipX</button>-->
+                <br/>
+                <button id="resetPoseBtn">
+                  Reset Pose
+                </button>
+
+              </td>
+            </tr>
+          </table>
+
+        </div>
+
+
+
+        <hr/>
+
+
+<!--
+        <div class="gifex-input">
+          <button id="splitBtn">Generate frames</button>
+        </div>
+-->
+
+      </td>
+
+      <td>
+        &nbsp;
+      </td>
+
+      <td style="margin:5px;padding:5px;" align="center" valign="top">
+
+        <div >
+          Name :
+          <span style="display: inline-block;" id="doll-skin">none</span>
+          &nbsp;
+
+
+          <button id="removeDollBtn">remove</button>
+
+        </div>
+
+
+        <div class="gifex-input">
+          obj name prefix :
+          <input type="text" style="width: 45%;" id="obj-name-prefix">
+
+
+        </div>
+
+        <div class="gifex-input">
+          scale :
+          <input style="width: 15%;" type="number" id="scale_xy" value="1.0" min="0.2" max="4.0" step="0.01">
+          <!--</div>-->
+          <!--<div class="gifex-input">-->
+
+<!--          doll position:-->
+
+          dx dy:
+
+          <input style="width: 15%;" type="number" id="pos_x" value="180" min="0" max="400">
+          <input style="width: 15%;" type="number" id="pos_y" value="252" min="0" max="400">
+        </div>
+
+        <div class="gifex-input">
+          display order:
+          <!--          Bring <button id="bring2FrntBtn">Bring to Front(最上)</button>-->
+          <!--          <button id="sendBckbtn">Back</button>-->
+          <button id="sendBckbtn">Backward下🔽️ </button>
+          <button id="bringFwrdBtn">Forward️上🔼 </button>
+          <!--          <button id="bringFwrdBtn">Front</button>-->
+          <!--          <button id="send2BckBtn">Send to Back</button>-->
+
+        </div>
+
+        <div class="gifex-input">
+          <button id="alignYBtn">Align Y </button>
+        </div>
+
+        <hr style="margin:5px;"/>
+
+        <div class="gifex-input">
+          <button id="combineAtlasesBtn"> Combine .atlases </button>
+          <button id="combineSKelsBtn"> Combine .skels  </button>
+          <br/>
+          Skeleton Targt version: Spine 3.8
+          <br/>
+          you DON'T need to combine texture pngs
+        </div>
+
+
+      </td>
+
+    </tr>
+  </table>
+
+  <hr style="width:80%; "/>
+  <div id="sshot" style="padding:5px;margin:5px;"></div>
+
+
+
+
+  <div class="gifex-input" style="text-align: center">
+
+    <h4>Settings</h4>
+
+
+    <div>
+      <h6>workspace is too small? Use Settings to change workspace width &amp; height.</h6>
+
+      <div class="gifex-input">
+        Size of Workspace :
+        &nbsp;width: <input size="5" style="Zwidth: 20%;" type="number" id="input_ws_w" value="" min="400" max="2000">
+        height: <input size="5" style="Zwidth: 20%;" type="number" id="input_ws_h" value="" min="400" max="2000">
+        &nbsp;
+        &nbsp;
+        <button id="regenWSBtn" >Regen workspace</button>
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+  <hr style="width:80%; "/>
+
+  <div w3-include-html="release_notes.html"></div>
+
+
+  <hr style="width:80%; "/>
+  <h4>Acknowledgements</h4>
+
+  <div style="text-align: left;display: inline-block;font-size:70%;">
+    Libraries
+    <ul>
+      <li><a target="_blank" href="https://github.com/cullus/gfSpinePiXi">gfSpinePiXi</a></li>
+      <li><a target="_blank" href="https://www.pixijs.com/">pixi.js</a></li>
+      <li><a target="_blank" href="https://github.com/pixijs/pixi-spine">pixi-spine</a></li>
+      <li><a target="_blank" href="https://github.com/eligrey/FileSaver.js/">FileSaver.js</a></li>
+      <li><a target="_blank" href="https://spin.js.org/">spin.js</a></li>
+      <li><a target="_blank" href="https://github.com/Stuk/jszip">JSZip</a></li>
+    </ul>
+    Special Thanks to
+    <ul>
+      <li>Buttter Dog, the</li>
+      <li>Greez</li>
+      <li>Chibi Club, the</li>
+    </ul>
+
+  </div>
+
+  <hr style="width:80%; "/>
+
+  <div style="">
+
+    <b>
+      Ask, and it shall be given to you.
+    </b>
+    <br/>
+    <br/>
+    <br/>
+  </div>
+
+  <!--  <button type="button" id="exportDBMoalBtn" class="btn btn-info"-->
+  <!--          data-toggle="modal" data-target="#exportDBModalCenter"-->
+  <!--  >Test-->
+  <!--  </button>-->
+
+</div>
+
+<div id="modals">
+
+</div>
+
+<script src="js/main.js?ts=0.1.2.0"></script>
+
+<script>
+
+  inject_hoxy = false;
+
+  // function fn_skeleton_filter(skel, bones, slots, animations, skins) {return skel;}
+  function fn_slots_filter(slots, skel, bones, chibi_name) {
+    // console.log(slots);
+
+    // for (var k in slots) {
+    //   var o = slots[k];
+    //   o.name = chibi_name + "_" + o.name;
+    //   o.bone = chibi_name + "_" + o.bone;
+    //   o.attachment = chibi_name + "_" + o.attachment;
+    // }
+    //
+    // return slots;
+  }
+  function fn_bones_filter(bones, skel, chibi_name) {
+    // console.log(bones);
+    return bones;
+  }
+
+  function fb_j(skel, n) {
+    var a = fb_j_k(skel, "name", n);
+    return a[0];
+  }
+  function fb_j_k(skel, k, n) {
+    var ar = [];
+    var bones = skel.bones;
+    return bones.filter( b => b[k] == n);
+  }
+  function fs_j(skel, n) {
+    return fs_j_k(skel, "name", n)[0];
+  }
+  function fs_j_k(skel, k, n) {
+    var slots = skel.slots;
+    return slots.filter( s => s[k] == n);
+    //
+    // for (var i = 0; i < slots.length; i++) {
+    //   var s = slots[i];
+    //   if (s[k] === n) return s;
+    // }
+    // return null;
+  }
+
+
+  function fn_animations_filter(animations, skel, bones, chibi_name) {
+    // animations.length = 0;
+  }
+
+  function fn_skins_filter(skins, skel, chibi_name) {
+
+  }
+
+
+  function fn_cb_d(d) { /* cbx(d);*/ }
+
+  function fn_cb_atlas_after_load(atlas, chibi_name) {
+    // console.log(atlas);
+    // let regions = atlas.regions;
+    // regions.forEach( (r, idx) => {
+    //   // console.log(r);
+    //   r.name = chibi_name + "_" + r.name;
+    // });
+  }
+
+  function fn_skeleton_filter(skel, bones, slots, animations, skins, chibi_name) {
+    return skel;
+  }
+
+
+  // t_sc = 4.2;
+  // t_sc = 1.0;
+  // function t_w() { return parseInt(459/t_sc) }
+  // function t_h() { return parseInt(306/t_sc) }
+  function t_w() { return parseInt(96/t_sc) }
+  function t_h() { return parseInt(96/t_sc) }
+
+
+
+</script>
+
+<script>
+  window.sp_runtime_version = "3.8";
+</script>
+
+<script src="js/compiled/chibi_combine38.js?ts=0.1.2.0" type="text/javascript"></script>
+
+<script>
+  /*
+  bat0.anchor.set(0.38, 0.65);
+  bat0.scale.set(0.28)
+  bat0.rotation = Math.PI/180*-38 ;
+  _fs("armR4").currentSprite.parent.addChildAt(bat0,0);
+  axe0.scale.set(0.22);
+  axe0.rotation = 1.4660765716752366;
+  axe0.anchor.set ( 0.58, 0.58 );
+  _fs("face").currentSprite.parent.addChild(axe0);
+  */
+  w3.includeHTML();
+
+  $(function() {
+    // $(".tdoll-parts-list").css("height", ws_h + "px");
+    set_single_motion_only(single_motion_only);
+  });
+
+  function goto_c2g() {
+    if (confirm("Spine 3 Chibi:\n" +
+      "spine-gif currently supports only Spine 2.1.x chibis (e.g. GirlsFrontline)\n"
+      + "use chibi-gif to read Spine 3.3~3.6 chibis (e.g. ArkNights)\n" +
+      "\nClick OK to jump to chibi-gif\n" +
+      "every work in this web will be reset.\n" +
+      "Are you sure?")) {
+      document.location.href="https://naganeko.github.io/chibi-gif";
+    }
+  }
+
+  function goto_s3g() {
+    alert("unsupported Spine data:\n" +
+      "this webapp supports only Spine 3.8 data.\n"
+      + "Use\n"
+      + "spine-gif to read Spine 2.1.x chibis (e.g. GirlsFrontline) \n" +
+      + "chibi-gif to read Spine3 (3.3~3.6) data (e.g. Arknights, AzurLane) \n" +
+      ""
+    );
+  }
+
+  let spine_gif_version = "0.1.2.0-sp38";
+
+  var controller;
+
+  SZJS_DEBUG = 1;
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-5N9JVDH');</script>
+  <!-- End Google Tag Manager -->
+  <link href="css/style.css?ts=54C7A42D-80CC-47AC-A8CC-D04ED28865DB" rel="stylesheet" type="text/css">
+  <link href="css/spin.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!--  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">-->
+
+  <style>
+
+  </style>
+  <title>spine-&gt;gif 0.1.32.0</title>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121789630-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-121789630-2');
+
+    var test_PMA_base = true;
+    var test_PMA_Texture = false;
+    var test_PMA_glstore = true;
+
+  </script>
+  <script src="js/pixi.js?ts=0.1.32.0"></script>
+  <script src="js/pixi-spine-sjzs.js?ts=0.1.32.0"></script><!-- 1.0.10 -->
+
+  <script src="js/pixi-filters-v2.7.1.js"></script>
+  <script src="js/pixi-layers.js"></script>
+
+  <script src="js/skb.js?ts=0.1.32.0"></script>
+  <script src="js/TDoll.js?ts=0.1.32.0"></script>
+  <script src="js/TDGroup.js?ts=0.1.32.0"></script>
+  <script src="js/gif.js?ts=0.1.32.0"></script>
+  <script src="js/FileSaver.js?ts=0.1.32.0"></script>
+  <script src="js/apngbuilder.js?ts=0.1.32.0"></script>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!--  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>-->
+  <!--  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>-->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+          integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+          crossorigin="anonymous"></script>
+
+  <script src="js/spin.js?ts=0.1.32.0"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.2.2/jszip.min.js"></script>
+  <script src="js/w3.js?ts=0.1.32.0"></script>
+
+
+  <!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.js"-->
+  <!--          integrity="sha512-vRqhAr2wsn+/cSsyz80psBbCcqzz2GTuhGk3bq3dAyytz4J/8XwFqMjiAGFBj+WM95lHBJ9cDf87T3P8yMrY7A=="-->
+  <!--          crossorigin="anonymous"></script>-->
+
+<!--  <script src="https://cdn.jsdelivr.net/npm/ag-psd@11.1.4/dist/bundle.min.js"></script>-->
+  <script src="https://cdn.jsdelivr.net/npm/ag-psd@11.6.0/dist/bundle.min.js"></script>
+
+</head>
+<body>
+
+
+<div id="main" style="text-align: center;">
+  <h3>
+    (spine-&gt;gif sp m opts) ; 0.1.32.0
+  </h3>
+
+  <div>
+    Toturials:
+    <a target="_quickstart" href="https://naganeko.github.io/chibi-tutorials/spine-gif/quick-start_ko">Quick Start(ko)</a>
+    <a target="_basicusages" href="https://naganeko.github.io/chibi-tutorials/spine-gif/basic-usages_ko">Basic Usages(ko)</a>
+  </div>
+  <div style="text-align: center;display: inline-block;font-size:70%;">
+    <div style="">
+      <b>
+        NOTICE お知らせ :
+        Do not ask me how to get Spine data. Spineデータの取得に関してのお問合わせは承りません。<br/>
+        This website is made for personal hobby use. This website are provided 'as is'
+        and your use of this website is entirely at your own risk. <br/>
+        本ウェブサイトは個人のホビー用であり、何も保証できません。本ウェブサイトの利用に起因するかもしれない如何なる損害や不具合等は利用者の責任です。
+      </b>
+    </div>
+  </div>
+
+  <table align="center" cellspacing="5" cellpadding="5"
+         border="1"
+  >
+
+    <tr>
+      <td>Spine</td>
+      <td></td>
+      <td>Animated Image</td>
+    </tr>
+    <tr valign="middle">
+      <td class="sagyoudai">
+        <div class="file-drop-area" title="drag and drop a chibi file set">
+          <div id="content" style="display:inline-block"></div>
+        </div>
+        <div style="display: none;">
+          <canvas id='cvs_shot' width='400' height='400' style="display: none;"></canvas>
+          <img src="img/blank.png" id="png_holder" width="32" height="32" style="display: none;"/>
+        </div>
+      </td>
+      <td width="">
+        &nbsp;
+        <!--<canvas width="400" height="400" id="cvs_shot" style="border:1px dotted red;"></canvas>-->
+      </td>
+
+      <td valign="bottom" align="center" class="sagyoudai"
+          style="background:darkseagreen;" nowrap>
+
+        <div class="gif-panel">
+
+          <div class="" id="gifhere" style="padding:5px;background:darkseagreen;"></div>
+
+          <div style="background:white;border:1px solid darkolivegreen; padding: 3px;">
+
+
+            <div class="gifex-input">
+          <span style="color:red;font-size:50%;">
+          Transparent GIF
+            DOES NOT be supported. 透明GIFは生成できません。
+          </span>
+              <br/>
+              number of times to loop: <input style="width: 10%;" type="number" min="0" max="999" id="repeat" value="0">
+              0: infinite
+            </div>
+            <div class="gifex-input">
+              frame delay: <input style="width: 12%;" type="number" min="1" max="1000" id="delay" value="25"> ms
+            </div>
+
+            <div class="gifex-input">
+              Type:
+              <select id="aniPicType">
+                <option value="gif" selected>GIF</option>
+                <option value="png">APNG</option>
+              </select>
+              <button id="genGIFbtn">Generate</button>
+              <button id="saveGifBtn">Save</button>
+              <span>
+</span>
+
+            </div>
+
+          </div>
+
+
+        </div>
+      </td>
+    </tr>
+    <tr>
+
+      <td style="margin:5px;padding:5px;" align="center" class="input-panel">
+        <div>
+          <input type="file" id="fileElem" multiple accept=".png, .skel, .atlas, .json, .txt, .bytes" style="display:none">
+          <div class="gifex-input">
+            <!--
+                        <button id="resetSkelBtn" style="background: coral;">
+                          Clear
+                        </button>
+                        &nbsp;
+                        &nbsp;
+                        &nbsp;
+            -->
+
+            <button id="fileSelect" title="drag and drop a chibi file set to the checkboard">
+              Add skeleton
+            </button>
+
+            &nbsp;
+            <button id="reloadBtn">
+              &nbsp;  Reload &nbsp;
+            </button>
+            <span title="Premultipled-Alpha">
+            <input type="checkbox" id="pma_chk" value="true"
+                   checked="checked"
+                   title="Premultiplied Alpha"
+            />un-PMA<a style="font-size:50%;padding-left:0px;margin-left:0px;" text="what's this?" target="_spine" href="http://esotericsoftware.com/forum/Premultiplied-Alpha-Guide-3132">(?)</a>
+            </span>
+
+          </div>
+        </div>
+
+        <hr/>
+
+        <div class="gifex-input">
+          Duration: <span id="duration">0.0</span> seconds
+
+        </div>
+
+        <div class="gifex-input">
+          <input id="currentTime_r" type="range" min="0" max="0" step="0.001"
+                 style="width:70%;display:inline;margin:0px 5px 10px 5px;"/>
+          <input style="width: 20%;" type="number" id="currentTime_t" value="0" min="0" max="0"
+                 step="0.001" readonly="readonly"/>
+
+        </div>
+
+        <div class="gifex-input">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+
+              <td width="55%" valign="middle">
+
+                <select id="dousa" style="text-align: center;width: 100%;">
+                  <option value="">---------</option>
+                </select>
+              </td>
+              <td valign="middle" nowrap="" >
+
+                <button id="playBtn">Play</button>
+                <button id="stopBtn">Stop</button>
+                <button id="flipxBtn">FlipX</button>
+                <!--                <button id="resetPoseBtn" >-->
+                <!--                  Reset Pose-->
+                <!--                </button>-->
+
+              </td>
+            </tr>
+          </table>
+
+        </div>
+
+        <div class="gifex-input">
+          <table border="0" width="100%;">
+            <tr>
+              <td width="20%;" >
+                <button id="addMotionBtn" style="text-align: right;"> Add Motion</button>
+              </td>
+              <td  rowspan="3" width="60%;">
+                <textarea id="motion_list" style="width:100%;" rows="5"></textarea></td>
+              <td  rowspan="3">
+                <!--<button id="addMotionBtn">Add<br/>selected<br/>motion</button>-->
+                <button id="previewBtn">Calc Total<br/>&amp; <br/>Preview  </button>
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: center;">
+                <input type="checkbox" id="loop_last"> loop last
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: center;">
+                <button id="resetListBtn" >Reset List</button>
+              </td>
+            </tr>
+          </table>
+          Total Duration: <span id="total_duration">0.0</span> seconds
+        </div>
+
+        <div class="gifex-input">
+          <!--</div>-->
+          <!--<div class="gifex-input">-->
+          Split:
+          <select id="split_by">
+            <option value="tnof">Total Number of Frames</option>
+            <option value="dpf" selected="selected">Delay per Frame</option>
+          </select>
+        </div>
+        <div class="gifex-input">
+          <input style="width: 20%;" type="number" id="divide_by" value="30" min="2" max="9999" step="1">
+          frames
+          <!--<button id="framesBtn">frames</button>-->
+
+          &lt;-&gt;
+          <input style="width: 15%;" type="number" id="step_by" value="25" min="20" max="1000">
+          ms
+        </div>
+
+
+        <hr/>
+
+
+        <div class="gifex-input">
+          <button id="splitBtn">Generate frames</button>
+        </div>
+
+      </td>
+
+      <td>
+        &nbsp;
+      </td>
+
+      <td style="margin:5px;padding:5px;" align="center" valign="top">
+
+
+        <!--<hr/>-->
+        <div class="gifex-input" style="font-size:80%;">
+          <input type="checkbox" id="shadow_off" value="true"> remove shadow
+          | <input type="checkbox" id="megane_off" value="true"> remove glasses
+
+          | filter
+          <select id="fun_fltrs" >
+            <option value="" >none</option>
+            <option value="dot" >Dot</option>
+            <option value="crt" >CRT</option>
+          </select>
+          | <input type="checkbox" id="enable_heterochromia" Xchecked="checked" value="true">
+          <!--          <label for="enable_heterochromia">-->
+          heterochromia
+          <!--          </label>-->
+        </div>
+
+        <div class="gifex-input" id="heterochromia_ui" style="font-size:100%;border: 1px dashed darkgrey;display:none;">
+          adjust hue and saturation of eyes' color
+          <table cellpadding="5" width="100%" border="0">
+
+            <tr>
+              <td width="20%">
+                Right Hue
+              </td>
+              <td width="60%">
+                <input class="range-heterochromia" id="eye_r"
+                       value="0" type="range" min="0" max="360" step="1">
+              </td>
+              <td width="20%">
+                <input class="number-heterochromia" type="number" id="val_eye_r"
+                       value="0" type="range" min="0" max="360" step="1">
+              </td>
+            </tr>
+            <tr>
+              <td width="20%">
+                saturation
+              </td>
+              <td width="60%">
+                <input class="range-heterochromia" id="eye_r-sat"
+                       value="0" type="range" min="0" max="2" step="0.1">
+              </td>
+              <td width="20%">
+                <input class="number-heterochromia" type="number" id="val_eye_r-sat"
+                       value="0" type="range" min="0" max="2" step="0.1">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Left
+              </td>
+              <td>
+                <input class="range-heterochromia" id="eye_l"
+                       value="0" type="range" min="0" max="360" step="1">
+              </td>
+              <td>
+                <input class="number-heterochromia" type="number" id="val_eye_l"
+                       value="0" type="range" min="0" max="360" step="1">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                saturation
+              </td>
+              <td>
+                <input class="range-heterochromia" id="eye_l-sat"
+                       value="0" type="range" min="0" max="2" step="0.1">
+              </td>
+              <td>
+                <input class="number-heterochromia" type="number" id="val_eye_l-sat"
+                       value="0" type="range" min="0" max="2" step="0.1">
+              </td>
+            </tr>
+
+
+          </table>
+
+        </div>
+
+        <div class="gifex-input" id="adjust_gls_ui" style="font-size:100%;border: 1px dashed #FF3333;display:none;">
+          Megane
+          R:<input style="width: 12%;" type="number" id="adjust_gls_r" value="0" min="0" max="360" step="1">
+          A:<input style="width: 12%;" type="number" id="adjust_gls_x" value="0" min="-30" max="30" step="1">
+          B:<input style="width: 12%;" type="number" id="adjust_gls_y" value="0" min="-30" max="30" step="1">
+          <br/>
+          SX:<input style="width: 12%;" type="number" id="adjust_gls_sx" value="1" min="-3" max="3" step="0.1">
+          SY:<input style="width: 12%;" type="number" id="adjust_gls_sy" value="1" min="-3" max="3" step="0.1">
+          <button id="applyGlsBtn">apply</button>
+        </div>
+
+        <hr class="hzline2"/>
+
+        <div >
+          Name :
+          <span style="display: inline-block;" id="doll-skin">none</span>
+          &nbsp;
+
+          <button id="removeDollBtn">remove</button>
+
+        </div>
+
+
+        <div class="gifex-input">
+          scale :
+          <input style="width: 15%;" type="number" id="scale_xy" value="1.0" min="0.2" max="4.0" step="0.01">
+          <!--</div>-->
+          <!--<div class="gifex-input">-->
+          doll position:
+          <input style="width: 10%;" type="number" id="pos_x" value="180" min="0" max="400">
+          <input style="width: 10%;" type="number" id="pos_y" value="252" min="0" max="400">
+        </div>
+
+        <div class="gifex-input">
+          display order:
+          <!--          Bring <button id="bring2FrntBtn">Bring to Front(最上)</button>-->
+          <!--          <button id="sendBckbtn">Back</button>-->
+          <button id="sendBckbtn">Backward下🔽️ </button>
+          <button id="bringFwrdBtn">Forward️上🔼 </button>
+          <!--          <button id="bringFwrdBtn">Front</button>-->
+          <!--          <button id="send2BckBtn">Send to Back</button>-->
+
+        </div>
+
+        <div class="gifex-input">
+          <button id="alignYBtn">Align Y </button>
+
+        </div>
+
+        <hr/>
+
+        <div class="gifex-input">
+          margin:
+          <input style="width: 10%;"  type="number" id="bs_margin" value="15" min="0" max="100">
+          <button id="calcBoundsBtn">Detect Bounds for GIF </button>
+        </div>
+        <div class="gifex-input">
+          GIF Bounds x/y&nbsp; :
+          <input style="width: 12%;" type="number" id="waku_x" min="-1000" max="1000">
+          <input style="width: 12%;" type="number" id="waku_y" min="-1000" max="1000">
+
+          <button id="centerBoundsBtn">Center</button>
+
+
+        </div>
+        <div class="gifex-input">
+          GIF Bounds w/h&nbsp; :
+          <input style="width: 12%;" type="number" id="waku_w" value="0" max="4000">
+          <input style="width: 12%;" type="number" id="waku_h" value="0" max="4000">
+
+          <!--contraints ratio <input type="checkbox" value="true" id="contrains_radio"/>-->
+        </div>
+
+
+        <div class="gifex-input">
+
+          BG color(RRGGBB): #<input style="width: 20%;" type="text" id="gif_bg" maxlength="7" value="ffffff" placeholder="">
+          <input type="checkbox" id="transparent" checked="true" value="true"> transparent
+        </div>
+
+
+
+
+
+
+
+      </td>
+
+    </tr>
+  </table>
+
+  <hr style="width:80%; "/>
+  <div id="sshot" style="padding:5px;margin:5px;"></div>
+  <div class="gifex-input" style="text-align: center">
+
+    <progress id="saving_progress" max="100" value="0" style="width:300px;">
+    </progress>
+
+    <!--</div>-->
+
+    <br/>
+    <button id="saveAllBtn">Save All Pics</button>
+    &nbsp;
+    <button id="saveAsZipBtn">Save as a ZIP</button>
+  </div>
+
+  <hr style="width:80%; "/>
+
+  <div class="gifex-input" style="text-align: center">
+    <h4>Experimental Utilities (sometimes buggy)</h4>
+    Export skeleton as json for:
+    <button id="saveSkelJsonBtn" title="skel bytes to json text"> Spine2.1.x</button>
+    <button id="export4db"
+            title="Spine3.3-Like format">
+      DragonBones
+    </button>
+    <button id="export4s38">Spine3.8</button>
+    <br/>
+    Some bones(mostly right arm and gun) are skewed on Spine 3.x or DragonBones.
+    <br/>You should normalize them by your hand.
+    <a href="http://esotericsoftware.com/blog/Spine-3.0.00-released#Skewing-scale"
+       target="_spine_blog"> WHY THIS HAPPENS? </a>
+  </div>
+  <div class="gifex-input" style="text-align: center">
+    Spine to PSD :
+    <button id="generatePsdBtn" title="Generate PhotoShop(PSD) file">Take Picture as PSD</button>
+  </div>
+  <div class="gifex-input" style="text-align: center">
+    <button id="saveAtlas4xBtn" title="atlas double-doubler">Save atlas_4x</button>
+    <button id="unpackTextureBtn">Unpack .atlas Texture</button>
+    <button id="saveUnPMATextureBtn">save Un-PMA Texture</button>
+    <br/>
+    atlas_4x: you need to double-double *.png with Waifu2x
+  </div>
+
+  <div class="gifex-input" style="text-align: center">
+    <h4>🤪 Naga's Tonikaku-Tools 😤</h4>
+
+    <div class="gifex-input" style="text-align: center">
+      <h4 style="font-weight: bold">
+      atlas resizer 📐🧐
+      </h4>
+
+      <div>
+<!--        <input type="file" id="atlas_files" multiple accept=".atlas,.txt" style="display:none">-->
+        scale <input type="number" max="32" min="0.01" step="0.01"
+                     id="atlas_resizer"
+                     value="4" style="width:7em">
+        <br/>
+        <div id="resizeAtlasArea" style="">
+          Drag and Drop atlas files here
+        </div>
+        <!--        <button id="resizeAtlasBtn" title="atlas double-doubler">-->
+        <!--          Save atlas-->
+        <!--        </button>-->
+      </div>
+      <br/>
+      <br/>
+    </div>
+
+  </div>
+
+  <!--</div>-->
+
+  <h5>Hm..interesting Features</h5>
+  <!--  <button id="reserveGlassesBtn"-->
+  <!--          title="it works only if the chibi has glasses">Reserve Glasses</button>-->
+  <!--  &nbsp;-->
+  <input type="checkbox" id="clearFailStepChk" value="true"> Enable Clear-Fail Step
+
+
+  <!--  </div>-->
+
+
+  <hr style="width:80%; " />
+
+  <div class="gifex-input" style="text-align: center">
+
+    <h4>Settings</h4>
+
+
+    <div>
+      <h6>workspace is too small? Use Settings to change workspace width &amp; height.</h6>
+
+      <div class="gifex-input">
+        Size of Workspace :
+        &nbsp;width: <input size="5" style="Zwidth: 20%;" type="number" id="input_ws_w" value="" min="400" max="2000">
+        height: <input size="5" style="Zwidth: 20%;" type="number" id="input_ws_h" value="" min="400" max="2000">
+        &nbsp;
+        &nbsp;
+        <button id="regenWSBtn" >Regen workspace</button>
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+  <!--  <hr style="width:80%; " />-->
+  <!--  <h4>Tutorials</h4>-->
+
+  <!--  <div style="text-align: left;display: inline-block;">-->
+  <!--    <ul>-->
+  <!--      <li>-->
+  <!--        <a target="yt" href="https://youtu.be/j3pT_1xaYMg">Dyablito's YouTube</a> : Helpful if you want transparent GIFs-->
+  <!--      </li>-->
+  <!--    </ul>-->
+  <!--  </div>-->
+
+  <hr style="width:80%; "/>
+
+  <div w3-include-html="release_notes.html"></div>
+
+
+  <hr style="width:80%; "/>
+  <h4>Acknowledgements</h4>
+
+  <div style="text-align: left;display: inline-block;font-size:70%;">
+    Libraries
+    <ul>
+      <li><a target="_blank" href="https://github.com/cullus/gfSpinePiXi">gfSpinePiXi</a></li>
+      <li><a target="_blank" href="https://www.pixijs.com/">pixi.js</a></li>
+      <li><a target="_blank" href="https://github.com/pixijs/pixi-spine">pixi-spine</a></li>
+      <li><a target="_blank" href="https://github.com/jnordberg/gif.js">gif.js</a></li>
+      <li><a target="_blank" href="https://github.com/eligrey/FileSaver.js/">FileSaver.js</a></li>
+      <li><a target="_blank" href="https://spin.js.org/">spin.js</a></li>
+      <li><a target="_blank" href="https://github.com/g200kg/apngbuilder">APNGBuilder</a></li>
+      <li><a target="_blank" href="https://github.com/Stuk/jszip">JSZip</a></li>
+      <li><a target="_blank" href="https://github.com/Agamnentzar/ag-psd">ag-psd</a></li>
+    </ul>
+    <!--  </div>-->
+    <!--  <div style="text-align: left;display: inline-block;font-size:70%;">-->
+    Special Thanks to
+    <ul>
+      <li>石油s in MICATEAM Minor Gallery</li>
+      <li>HB</li>
+      <li>MAMIKO</li>
+      <li>PG@少前+方舟</li>
+      <li>36Base</li>
+      <li>Sukeban Games</li>
+      <li>MICA Team</li>
+    </ul>
+
+  </div>
+
+  <hr style="width:80%; "/>
+
+  <div style="">
+
+    <b>
+      Ask, and it shall be given to you.
+    </b>
+    <br/>
+    <br/>
+    <br/>
+  </div>
+
+  <!--  <button type="button" id="exportDBMoalBtn" class="btn btn-info"-->
+  <!--          data-toggle="modal" data-target="#exportDBModalCenter"-->
+  <!--  >Test-->
+  <!--  </button>-->
+
+</div>
+
+<div id="modals">
+
+  <!-- Modal -->
+  <div class="modal fade" id="exportDBModalCenter" tabindex="-1" role="dialog"
+       aria-labelledby="exportDBModalCenterTitle"
+       aria-hidden="true">
+    <div class="modal-dialog " role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exportDBModalCenterTitle">Skewed Bones Detected</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div style="text-align: center;">
+            <table align="center" border="1">
+              <tr>
+                <td width="50%">
+                  <img src="img/skewed_db_g36_attack.gif">
+                </td>
+                <td width="50%">
+                  <img src="img/fixed_db_g36_attack.gif">
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Skewed
+                </td>
+                <td>
+                  Normalized
+                </td>
+              </tr>
+            </table>
+          </div>
+          <br/>
+          Some bones with scales and rotations might be skewed on DragonBones.
+          <br/>
+          <div>
+            If you want to normalize(deskew) them, Click <b>"Yes"</b>
+            <br/>
+            or Click <b>"No"</b> to export AS-IS
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+          <button type="button" id="exportDB_asis_confirmed" class="btn btn-info">No, Export As-Is</button>
+          <button type="button" id="exportDB_n_confirmed" class="btn btn-primary">Yes, Normalize and Export</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="chibiPsdModalCenter" tabindex="-1" role="dialog"
+       aria-labelledby="chibiPsdModalCenterTitle"
+       aria-hidden="true">
+    <div class="modal-dialog " role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 style="display: inline-block;" class="modal-title" id="chibiPsdModalCenterTitle">(chibi-&gt;psd c opts); 0.3.1 </h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="gifex-input">
+            <table align="center" border="0" cellpadding="5">
+              <tr>
+                <th width="30%">
+                  Layer Name:
+                </th>
+                <td width="70%">
+                  slot Name _ Attachment Name _ slot Index
+                  <select type="radio" name="chibi-psd_naming-rule" id="chibi-psd_naming-rule" class="kakusu">
+                    <option selected value="ni">slot Name _ slot Index : <b>Truth_042</b></option>
+                    <option value="in">slot Index _ slot Name : 042_Truth</option>
+                    <option value="n">slot Name only : Truth</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  Hidden Slots and Attachments:
+                </th>
+                <td>
+                  Include as Hidden Layers
+                  <select type="radio" name="chibi-psd_hidden-slot" id="chibi-psd_hidden-slot" class="kakusu">
+                    <option value="ignore">Skip them</option>
+                    <option selected value="include">Include as Hidden Layers</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  Bones (Experimental)
+                </th>
+                <td>
+                  <select type="radio" name="chibi-psd_hidden-slot" id="chibi-psd_include_bones">
+                    <option value="">No, Skip them</option>
+                    <option  value="true" selected>Yes, I need Bones anyway</option>
+                  </select>
+                </td>
+              </tr>
+            </table>
+            <br/>
+            INFO:
+            <ol>
+<!--              <li>Currently No Options Available.</li>-->
+              <li class="torikeshi">The boundary of PSD (the red box) is recalculated.
+              </li>
+            </ol>
+
+          </div>
+          <br/>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+          <button type="button" id="chibiPsdExecBtn" class="btn btn-info">Execute</button>
+          <!--          <button type="button" id="exportDB_n_confirmed" class="btn btn-primary">Yes, Normalize and Export</button>-->
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="atlas4xModalCenter" tabindex="-1" role="dialog"
+       aria-labelledby="atlas4xModalCenterTitle"
+       aria-hidden="true">
+    <div class="modal-dialog " role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 style="display: inline-block;" class="modal-title" id="atlas4xModalCenterTitle">
+            (atlas4x c opts); 0.2.2 </h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="gifex-input">
+            <table align="center" border="0" cellpadding="5">
+              <tr>
+                <th width="30%">
+                  Upscale:
+                </th>
+                <td>
+                  <select type="select" name="atlas4x_upscale" id="atlas4x_upscale">
+                    <option selected value="4"> 4x (recommended)</option>
+                    <option  value="2"> 2x </option>
+                    <option  value="1.6"> 1.6x </option>
+                    <option  value="2.56"> 2.56x (1.6 * 1.6) </option>
+                    <option  value="" > Other ... -&gt; </option>
+                  </select>
+                  <input type="number" max="32" min="0.01" step="0.01" id="atlas4x_upscale_2" name="atlas4x_upscale_2" style="width:30%">
+                </td>
+              </tr>
+            </table>
+
+            <ul>
+              <li>
+                1.6x and 2.56x are not tested.
+              </li>
+            </ul>
+
+          </div>
+          <br/>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+          <button type="button" id="execAtlas4xBtn" class="btn btn-info">Execute</button>
+          <!--          <button type="button" id="exportDB_n_confirmed" class="btn btn-primary">Yes, Normalize and Export</button>-->
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+<script src="js/main.js?ts=0.1.32.0"></script>
+
+<script>
+
+  inject_hoxy = false;
+
+  // function fn_skeleton_filter(skel, bones, slots, animations, skins) {return skel;}
+  function fn_slots_filter(slots, skel, bones) {}
+  function fn_bones_filter(bones, skel) {}
+
+  function fb_j(skel, n) {
+    var a = fb_j_k(skel, "name", n);
+    return a[0];
+  }
+  function fb_j_k(skel, k, n) {
+    var ar = [];
+    var bones = skel.bones;
+    return bones.filter( b => b[k] == n);
+  }
+  function fs_j(skel, n) {
+    return fs_j_k(skel, "name", n)[0];
+  }
+  function fs_j_k(skel, k, n) {
+    var slots = skel.slots;
+    return slots.filter( s => s[k] == n);
+    //
+    // for (var i = 0; i < slots.length; i++) {
+    //   var s = slots[i];
+    //   if (s[k] === n) return s;
+    // }
+    // return null;
+  }
+
+
+  function fn_animations_filter(animations, skel, bones) {
+    if (!inject_hoxy) return;
+
+    fb_j(skel, b_armR1).rotation = b_angles.armR1;
+    fb_j(skel, b_armR2).rotation = b_angles.armR2;
+    fb_j(skel, b_armR3).rotation = b_angles.armR3;
+    fb_j(skel, b_armL1).rotation = b_angles.armL1;
+    fb_j(skel, b_armL2).rotation = b_angles.armL2;
+    fb_j(skel, b_armL3).rotation = b_angles.armL3;
+    fb_j(skel, b_legR1).rotation = b_angles.legR1;
+    fb_j(skel, b_legR2).rotation = b_angles.legR2;
+    fb_j(skel, b_legL1).rotation = b_angles.legL1;
+    fb_j(skel, b_legL2).rotation = b_angles.legL2;
+
+    var skin = skel.skins.default;
+    var armR3 = skin[s_armR3];
+    var armL3 = skin[s_armL3];
+    for (var k in armL3) {
+      console.log("skin", s_armL3, k);
+      if (armR3[k]) continue;
+      armR3[k] = JSON.parse(JSON.stringify(armL3[k]));
+    }
+    var bones = skel.bones;
+    for(var i = 0; i<bones.length ;i++) {
+      var b = bones[i];
+      if (b.name === b_armR3 || b.name === b_armL3 ) {
+        b.inheritRotation = false;
+      }
+    }
+    console.log(skel);
+    var names = Object.keys(animations);
+    names.forEach( n => {
+      if (!n.startsWith("pseudo")) {
+        delete animations[n];
+      }
+    });
+    animations["hoxy"] = hoxy_template();
+  }
+  function fn_skins_filter(skins, skel) {}
+  function fn_cb_d(d) { /* cbx(d);*/ }
+  function fn_cb_atlas_after_load(atlas) {}
+  function fn_skeleton_filter(skel, bones, slots, animations, skins) {return skel;}
+
+  // t_sc = 4.2;
+  t_sc = 1.0;
+  // function t_w() { return parseInt(459/t_sc) }
+  // function t_h() { return parseInt(306/t_sc) }
+  function t_w() { return parseInt(96/t_sc) }
+  function t_h() { return parseInt(96/t_sc) }
+  // function t_w() { return parseInt(250/t_sc) }
+  // function t_h() { return parseInt(176/t_sc) }
+  s_x = 0;
+  s_y = 0;
+  b_x  = 0;
+  b_y  = 0;
+  s_r = 0;
+  // s_r = -30;
+  s_sx = 1;
+  s_sy = 1;
+  b_p = "armR3";
+  s_o = "armR3";
+
+  s_r = -90;
+  s_x = -10;
+  s_y = 20;
+  b_p = "root";
+  s_o = "armR4";
+
+  Array.prototype.insert = function ( index, item ) {
+    this.splice( index, 0, item );
+  };
+
+  var kazari_data = {};
+  var kazari_txtr_names = [];
+  var kazari_txtr_obj = {};
+
+  // var base_w = 100;
+  var base_w = 95;
+
+  function debugGeo(n) {
+    var bone = _fb(n);
+    function ff(bn) {
+      var p = bn.parent;
+      // if (!p) {
+      //   return;
+      // }
+      // console.log(bn.data.name
+      //   , bn.worldX, bn.worldY
+      //   , bn.worldX - p.worldX, bn.worldY - p.worldY
+      // , bn.worldRotation , bn.worldRotation - p.worldRotation
+      // )
+      console.log(bn.data.name, bn.x, bn.worldX
+        , bn.y, bn.worldY
+        , bn.rotation, bn.worldRotation
+      )
+      if (!p) {
+        return;
+      }
+      ff(p);
+    }
+    ff(bone);
+  }
+
+
+</script>
+
+<script>
+  let readPsd = agPsd.readPsd;
+  let writePsd = agPsd.writePsd;
+
+  function loadPSD(url, callback) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+    xhr.responseType = 'arraybuffer';
+    xhr.addEventListener('load', function () {
+      const buffer = xhr.response;
+      const psd = readPsd(buffer);
+      console.log(psd);
+      callback(psd);
+      // document.body.appendChild(psd.children[0].canvas);
+    }, false);
+    xhr.send();
+  }
+
+</script>
+
+<script src="js/compiled/spine_gif.js?ts=0.1.32.0" type="text/javascript"></script>
+
+<script>
+  /*
+  bat0.anchor.set(0.38, 0.65);
+  bat0.scale.set(0.28)
+  bat0.rotation = Math.PI/180*-38 ;
+  _fs("armR4").currentSprite.parent.addChildAt(bat0,0);
+  axe0.scale.set(0.22);
+  axe0.rotation = 1.4660765716752366;
+  axe0.anchor.set ( 0.58, 0.58 );
+  _fs("face").currentSprite.parent.addChild(axe0);
+  */
+  w3.includeHTML();
+
+  $(function() {
+    // $(".tdoll-parts-list").css("height", ws_h + "px");
+    set_single_motion_only(single_motion_only);
+  });
+
+  function goto_c2g() {
+    if (confirm("Spine 3 Chibi:\n" +
+      "spine-gif currently supports only Spine 2.1.x chibis (e.g. GirlsFrontline)\n"
+      + "use chibi-gif to read Spine 3.3~3.6 chibis (e.g. ArkNights)\n" +
+      "\nClick OK to jump to chibi-gif\n" +
+      "every work in this web will be reset.\n" +
+      "Are you sure?")) {
+      document.location.href="https://naganeko.github.io/chibi-gif";
+    }
+  }
+
+  let spine_gif_version = "0.1.32.0";
+
+  var controller;
+
+  function o_o(d, c) {
+    var m = _fs("mouth") || _fs("mouth1") ;
+    var cnt0 = m.currentSprite.parent;
+    cnt0.addChild(c);
+    c.rotation = -cnt0.rotation;
+    c.scale.set(0.4);
+    c.position.set(31,-10);
+    c.anchor.set(0.5);
+    c.parentGroup = top_grp;
+  }
+
+  SZJS_DEBUG = 1;
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,2 @@
+# spine-gif-extract
+

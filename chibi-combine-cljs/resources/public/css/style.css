@@ -1,0 +1,144 @@
+/* some style */
+
+canvas {
+    background: url("../img/checkered_board.png");
+}
+
+/*.scrollable {*/
+/*overflow: scroll;*/
+/*}*/
+
+/*td {*/
+/*margin:0px;*/
+/*padding:0px;*/
+/*}*/
+
+body {
+    background: white;
+}
+
+.sagyoudai {
+    min-width: 400px;
+    min-height: 400px;
+}
+
+.tdoll-parts-list {
+    height: 240px;
+    overflow-y: scroll;
+}
+
+div.gifex-input {
+    padding: 3px;
+    font-family: "Courier New";
+    font-weight: bold;
+}
+
+div.gifex-input td {
+    /*border:1px solid red;*/
+    padding:3px;
+}
+div.gifex-input table {
+    width:90%;
+}
+
+#addMotionBtn {
+    /*font-size:90%;*/
+}
+
+#previewBtn {
+    font-size:90%;
+}
+
+div.frame1 {
+    border: 3px outset darkgray ;
+    display: inline-block;
+    padding: 5px;
+    margin: 5px;
+    font-size: 95%;
+}
+
+div.frame1 > img {
+    border: 1px solid cadetblue; ;
+    background: url("../img/checkered_board.png");
+}
+
+.input-panel hr {
+    margin:3px;
+}
+
+.range-c {
+    width:90%;
+}
+
+input[type=range].heterochromia {
+    width:90%;
+}
+
+#resetPoseBtn {
+    margin-top:3px;
+}
+
+.red-bg {
+    background:#FF3333;
+}
+
+#sshot {
+    max-height: 500px; overflow-y: scroll;
+}
+
+.file-drop-area {
+    margin: 0px;
+    padding: 0px;
+}
+
+.file-drop-area-2 {
+    margin:5px;
+    padding:10px 30px 10px 30px;
+    border: 2px solid cadetblue ;
+    font-size:150%;
+    display: inline-block;
+}
+
+/*#content {*/
+/*}*/
+/*.dd-msg {*/
+/*}*/
+
+#gifhere {
+    /*display: none;*/
+    min-height: 200px;
+}
+
+#kazari-list button {
+    font-size:80%;
+}
+#slot-list button {
+    font-size:60%;
+}
+
+.kazari-thumb {
+    /*padding-bottom: 0px;*/
+    /*padding-top: 0px;*/
+    width:80px;
+    border: 1px solid #9e9e9e;
+}
+.kazari-panel {
+    display: none;
+}
+
+.hzline2 {
+    margin-bottom: 5px;
+    margin-top:5px;
+}
+
+.gif-panel {
+    /*background:darkseagreen;*/
+}
+
+.kakusu {
+    display: none;
+}
+
+.torikeshi {
+    text-decoration: line-through;
+}

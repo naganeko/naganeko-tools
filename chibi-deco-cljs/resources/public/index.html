@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CSP40BPMWE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-CSP40BPMWE');
+  </script>
+  <link href="css/style.css?ts=0.4.3" rel="stylesheet" type="text/css">
+  <link href="css/spin.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!--  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">-->
+
+  <style>
+
+
+  </style>
+  <title>chibi-deco 0.4.3</title>
+  <script>
+
+    var test_PMA_base = true;
+    var test_PMA_Texture = false;
+    var test_PMA_glstore = true;
+
+  </script>
+  <script src="js/pixi.js?ts=0.4.3"></script>
+  <script src="js/pixi-spine-sjzs.js?ts=0.4.3"></script><!-- 1.0.10 -->
+  <script src="js/pixi-filters-v2.7.1.js"></script>
+
+  <script src="js/skb.js"></script>
+  <script src="js/TDoll.js"></script>
+  <script src="js/gif.js"></script>
+  <script src="js/FileSaver.js"></script>
+  <script src="js/apngbuilder.js"></script>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!--  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>-->
+<!--  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>-->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+          integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+          crossorigin="anonymous"></script>
+
+  <script src="js/spin.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.2.2/jszip.min.js"></script>
+  <script src="js/w3.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/maxrects-packer@2.6.0/dist/maxrects-packer.js"
+          integrity="sha256-zVqnNM0DoD4i+y7zwb6RmSv1YoyrXev4VNvhg6sbMGk=" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+
+<div id="main" style="text-align: center;">
+  <h3>
+    (chibi-deco sp m opts) ; 0.4.3
+  </h3>
+
+  <div style="text-align: center;display: inline-block;font-size:70%;">
+    <div>NOTICE お知らせ</div>
+    <div style="">
+      Do not ask me how to get Spine data. Spineデータの取得に関してのお問合わせは承りません。<br/>
+      <b>This website is made for personal hobby use. This website are provided 'as is'
+        and your use of this website is entirely at your own risk. <br/>
+        本ウェブサイトは個人のホビー用であり、何も保証できません。本ウェブサイトの利用に起因するかもしれない如何なる損害や不具合等は利用者の責任です。
+      </b>
+    </div>
+  </div>
+
+  <table align="center" cellspacing="5" cellpadding="5"
+         border="1"
+  >
+
+    <tr>
+      <td>Spine 2D</td>
+      <td>잕잕</td>
+      <td>Decorations / Animated Image</td>
+    </tr>
+    <tr valign="middle">
+      <td class="sagyoudai">
+        <div class="file-drop-area" title="drag and drop a chibi file set">
+          <div id="content" style="display:inline-block"></div>
+        </div>
+
+      </td>
+      <td width="40" id="work2" >
+        훗훗
+        <div style="display: none;">
+          <canvas id='cvs_shot' width='10' height='10' style="display: none;"></canvas>
+          <img src="img/blank.png" id="png_holder" width="32" height="32" style="display: none;" />
+        </div>
+      </td>
+
+      <td valign="middle" align="center" class="sagyoudai" nowrap>
+<div>
+  <div Zstyle="display: none;">
+    <canvas id='cvs_shot2' width='1' height='1' Zstyle="display: none;"></canvas>
+  </div>
+</div>
+        <div>
+          <div>
+            <span class="file-drop-area-2" title="Drag &amp; Drop here">
+            Open Deco files
+            </span>
+
+            Master Scale:
+            <input style="width: 10%;" type="number" value="1" id="kazari_master_sc" min="0.1" max="4" step="0.1">
+            <!--            <input type="file" name="kazari_file" id="kazari_file">-->
+          </div>
+          <table border="1">
+            <tr>
+              <td style="padding: 5px;margin:3px;display: none;" width="100" >
+                <div id="slot-list" class="tdoll-parts-list list-group" >
+<!--                  <button type="button" class="list-group-item list-group-item-action">-->
+<!--                  </button>-->
+                </div>
+              </td>
+              <td style="padding: 5px;margin:3px;" width="200">
+                <div id="kazari-list" class="tdoll-parts-list list-group" >
+
+                </div>
+              </td>
+              <td style="padding: 5px;" width="400" >
+
+                <div style="font-size:120%;">
+
+<!--                  <div class="gifex-input">-->
+<!--                    width  :-->
+<!--                    <input style="width: 40%;" type="number" id="kazari_w" min="10" max="1000" step="1">-->
+<!--                  </div>-->
+<!--                  <div class="gifex-input">-->
+<!--                    height :-->
+<!--                    <input readonly style="width: 40%;" type="number" id="kazari_h" min="" max="1000" step="1">-->
+<!--                  </div>-->
+
+                  <div class="gifex-input">
+                    selected :
+                    <span id="kazari_name" ></span>
+                  </div>
+
+                  <div class="gifex-input">
+                    position  :
+                    <input style="width: 30%;" type="number" id="kazari_x" min="-1000" max="1000" step="0.001">
+                    <input style="width: 30%;" type="number" id="kazari_y" min="-1000" max="1000" step="0.001">
+                  </div>
+
+                  <div class="gifex-input">
+                    rotation  :
+<!--                    <input style="width: 30%;" type="number" id="kazari_r" min="-1000" max="1000" step="0.001">-->
+                    <input style="width: 30%;" type="number" id="kazari_r" min="-360" max="360" step="0.5">
+                  </div>
+                  <div class="gifex-input">
+                    scale  : &nbsp;&nbsp;
+                    <input style="width: 30%;" type="number" id="kazari_sc" min="0.1" max="100" step="0.01">
+                  </div>
+
+                  <div class="gifex-input" title="bone parent">
+                    parent  :
+                    <select id="doll-bones">
+                      <option value=""> -----------------</option>
+                      <option> root</option>
+                      <option> body</option>
+                      <option> hip</option>
+                    </select>
+                  </div>
+
+
+                  <div class="gifex-input" title="drawing order">
+                    draw order:
+                    <select id="slot-draw-order">
+                      <option value=""> ------------</option>
+                      <option> root</option>
+                    </select>
+                  </div>
+
+                  <div class="gifex-input" >
+                    <button id="remove-kazari-btn">Remove this deco</button>
+                  </div>
+
+                </div>
+
+
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3" style="padding:5px;text-align: center;">
+
+                &nbsp;
+                <button id="repackBtn">Repack Texture</button>
+                &nbsp;
+                <button id="saveTxtrAtlasBtn">Save txtr .atlas</button>
+                <button id="saveTxtrPngkBtn">Save txtr .png</button>
+                <button id="saveSkelJsonBtn">Save skeleton json</button>
+
+
+              </td>
+            </tr>
+          </table>
+
+        </div>
+
+
+        <div class="" id="gifhere" style="padding:5px;background:darkseagreen;"></div>
+      </td>
+    </tr>
+    <tr>
+
+      <td style="margin:5px;padding:5px;" align="center" class="input-panel">
+        <div>
+          <input type="file" id="fileElem" multiple accept=".png, .skel, .atlas, .json, .txt, .bytes" style="display:none">
+          <div class="gifex-input">
+            <button id="fileSelect">
+              Open skeleton
+            </button>
+
+            &nbsp;
+            <button id="reloadBtn">Reload</button>
+            <span >
+            <input type="checkbox" id="pma_chk" value="true" title="Premultiplied Alpha">PMA
+            </span>
+
+          </div>
+        </div>
+
+        <hr/>
+
+        <div class="gifex-input">
+          Duration: <span id="duration">0.0</span> seconds
+
+        </div>
+
+        <div class="gifex-input">
+          <input id="currentTime_r" type="range" min="0" max="0" step="0.001"
+                 style="width:70%;display:inline;margin:0px 5px 10px 5px;"/>
+          <input style="width: 20%;" type="number" id="currentTime_t" value="0" min="0" max="0"
+                 step="0.001" readonly="readonly"/>
+
+        </div>
+
+        <div class="gifex-input">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+
+              <td width="55%" valign="middle">
+
+                <select id="dousa" style="text-align: center;width: 100%;">
+                  <option value="">---------</option>
+                </select>
+              </td>
+              <td valign="middle" nowrap="" >
+
+                <button id="playBtn">Play</button>
+                <button id="stopBtn">Stop</button>
+                <button id="flipxBtn">FlipX</button>
+                <!--                <button id="resetPoseBtn" >-->
+                <!--                  Reset Pose-->
+                <!--                </button>-->
+
+              </td>
+            </tr>
+          </table>
+
+        </div>
+
+        <div class="gifex-input">
+          <table border="0" width="100%;">
+            <tr>
+              <td  align="right">
+                Motion<br/>
+                list:
+              </td>
+              <td width="15%;" >
+                <button id="addMotionBtn" style="text-align: left;">|<br/>|Add<br/>&nbsp;--&gt;</button>
+              </td>
+              <td  rowspan="2" width="60%;">
+                <textarea id="motion_list" style="width:100%;" rows="5"></textarea></td>
+              <td  rowspan="2">
+                <!--<button id="addMotionBtn">Add<br/>selected<br/>motion</button>-->
+                <button id="previewBtn">Calc Total<br/>&amp; <br/>Preview  </button>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" style="text-align: center;">
+                <button id="resetListBtn" >Reset List</button>
+              </td>
+            </tr>
+          </table>
+          Total Duration: <span id="total_duration">0.0</span> seconds
+        </div>
+
+        <div class="gifex-input">
+          <!--</div>-->
+          <!--<div class="gifex-input">-->
+          Split:
+          <select id="split_by">
+            <option value="tnof">Total Number of Frames</option>
+            <option value="dpf" selected="selected">Delay per Frame</option>
+          </select>
+        </div>
+        <div class="gifex-input">
+          <input style="width: 10%;" type="number" id="divide_by" value="30" min="2" max="9999" step="1">
+          frames
+          <!--<button id="framesBtn">frames</button>-->
+
+          &lt;-&gt;
+          <input style="width: 10%;" type="number" id="step_by" value="25" min="20" max="1000">
+          ms
+        </div>
+
+
+        <hr/>
+
+
+        <div class="gifex-input">
+          <button id="splitBtn">Generate frames</button>
+        </div>
+
+      </td>
+      <td>
+        뚠뚠
+      </td>
+      <td style="margin:5px;padding:5px;" align="center">
+
+
+        <div style="border:1px solid darkolivegreen; padding: 3px;">
+
+
+          <div class="gifex-input">
+          <span style="color:red;font-size:50%;">
+          Transparent GIF
+            DOES NOT be supported. 透明GIFは生成できません。
+          </span>
+            <br/>
+            number of times to loop: <input style="width: 10%;" type="number" min="0" max="999" id="repeat" value="0">
+            0: infinite
+          </div>
+          <div class="gifex-input">
+            frame delay: <input style="width: 12%;" type="number" min="1" max="1000" id="delay" value="25"> ms
+          </div>
+
+          <div class="gifex-input">
+            Type:
+            <select id="aniPicType">
+              <option value="gif" selected>GIF</option>
+              <option value="png">APNG</option>
+            </select>
+            &nbsp;
+            <button id="genGIFbtn">Generate</button>
+            &nbsp;
+            <button id="saveGifBtn">Save</button>
+          </div>
+          <!--<div class="gifex-input">-->
+          <!--</div>-->
+
+        </div>
+        <!--<hr/>-->
+        <div class="gifex-input" style="font-size:80%;">
+          <input type="checkbox" id="shadow_off" value="true"> remove shadow
+          | <input type="checkbox" id="megane_off" value="true"> remove glasses
+
+          | filter
+          <select id="fun_fltrs" >
+            <option value="" >none</option>
+            <option value="dot" >Dot</option>
+            <option value="crt" >CRT</option>
+          </select>
+          | <input type="checkbox" id="enable_heterochromia" Xchecked="checked" value="true">
+          <!--          <label for="enable_heterochromia">-->
+          heterochromia
+          <!--          </label>-->
+        </div>
+
+        <div class="gifex-input" id="heterochromia_ui" style="font-size:100%;border: 1px dashed darkgrey;display:none;">
+          adjust hue and saturation of eyes' color
+          <table cellpadding="5" width="100%" border="0">
+
+            <tr>
+              <td width="20%">
+                Right Hue
+              </td>
+              <td width="60%">
+                <input class="range-heterochromia" id="eye_r"
+                       value="0" type="range" min="0" max="360" step="1">
+              </td>
+              <td width="20%">
+                <input class="number-heterochromia" type="number" id="val_eye_r"
+                       value="0" type="range" min="0" max="360" step="1">
+              </td>
+            </tr>
+            <tr>
+              <td width="20%">
+                saturation
+              </td>
+              <td width="60%">
+                <input class="range-heterochromia" id="eye_r-sat"
+                       value="0" type="range" min="0" max="2" step="0.1">
+              </td>
+              <td width="20%">
+                <input class="number-heterochromia" type="number" id="val_eye_r-sat"
+                       value="0" type="range" min="0" max="2" step="0.1">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Left
+              </td>
+              <td>
+                <input class="range-heterochromia" id="eye_l"
+                       value="0" type="range" min="0" max="360" step="1">
+              </td>
+              <td>
+                <input class="number-heterochromia" type="number" id="val_eye_l"
+                       value="0" type="range" min="0" max="360" step="1">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                saturation
+              </td>
+              <td>
+                <input class="range-heterochromia" id="eye_l-sat"
+                       value="0" type="range" min="0" max="2" step="0.1">
+              </td>
+              <td>
+                <input class="number-heterochromia" type="number" id="val_eye_l-sat"
+                       value="0" type="range" min="0" max="2" step="0.1">
+              </td>
+            </tr>
+
+
+          </table>
+
+        </div>
+
+
+        <div class="gifex-input" id="adjust_gls_ui" style="font-size:100%;border: 1px dashed #FF3333;display:none;">
+          Megane
+          R:<input style="width: 12%;" type="number" id="adjust_gls_r" value="0" min="0" max="360" step="1">
+          A:<input style="width: 12%;" type="number" id="adjust_gls_x" value="0" min="-30" max="30" step="1">
+          B:<input style="width: 12%;" type="number" id="adjust_gls_y" value="0" min="-30" max="30" step="1">
+          <br/>
+          SX:<input style="width: 12%;" type="number" id="adjust_gls_sx" value="1" min="-3" max="3" step="0.1">
+          SY:<input style="width: 12%;" type="number" id="adjust_gls_sy" value="1" min="-3" max="3" step="0.1">
+          <button id="applyGlsBtn">apply</button>
+        </div>
+
+        <div class="gifex-input">
+          scale :
+          <input style="width: 15%;" type="number" id="scale_xy" value="1.0" min="0.2" max="4.0" step="0.01">
+          <!--</div>-->
+          <!--<div class="gifex-input">-->
+          doll position:
+          <input style="width: 10%;" type="number" id="pos_x" value="180" min="0" max="400">
+          <input style="width: 10%;" type="number" id="pos_y" value="252" min="0" max="400">
+        </div>
+        <div class="gifex-input">
+          margin:
+          <input style="width: 10%;"  type="number" id="bs_margin" value="15" min="0" max="100">
+          <button id="calcBoundsBtn">Detect Bounds for GIF </button>
+        </div>
+        <div class="gifex-input">
+          GIF Bounds x/y&nbsp; :
+          <input style="width: 12%;" type="number" id="waku_x" min="-1000" max="1000">
+          <input style="width: 12%;" type="number" id="waku_y" min="-1000" max="1000">
+
+          <button id="centerBoundsBtn">Center</button>
+
+
+        </div>
+        <div class="gifex-input">
+          GIF Bounds w/h&nbsp; :
+          <input style="width: 12%;" type="number" id="waku_w" value="0" max="400">
+          <input style="width: 12%;" type="number" id="waku_h" value="0" max="400">
+
+          <!--contraints ratio <input type="checkbox" value="true" id="contrains_radio"/>-->
+        </div>
+
+
+        <div class="gifex-input">
+
+          BG color(RRGGBB): #<input style="width: 20%;" type="text" id="gif_bg" maxlength="6" value="ffffff" placeholder="">
+          <input type="checkbox" id="transparent" checked="true" value="true"> transparent
+        </div>
+
+      </td>
+    </tr>
+  </table>
+
+  <hr style="width:80%; " />
+  <div id="sshot" style="padding:5px;margin:5px;"></div>
+  <div class="gifex-input" style="text-align: center">
+
+    <progress id="saving_progress" max="100" value="0" style="width:300px;">
+    </progress>
+
+    <!--</div>-->
+
+    <br/>
+    <button id="saveAllBtn" >Save All Pics</button>
+    &nbsp;
+    <button id="saveAsZipBtn" >Save as a ZIP</button>
+  </div>
+
+  <hr style="width:80%; " />
+  <div class="gifex-input" style="text-align: center">
+    <h4>Experimental Utilities</h4>
+<!--    <button id="saveSkelJsonBtn">Save skeleton json(2.1.x)</button>-->
+<!--    <button id="export4db">Export Spine3.6(DragonBones)</button>-->
+<!--    <button id="export4s38">Export Spine3.8.x </button>-->
+<!--    &nbsp;-->
+<!--    <button id="saveAtlas4xBtn">Save atlas_4x</button>-->
+<!--    <button id="unpackTextureBtn">Unpack .atlas Texture</button>-->
+
+<!--    <br/>-->
+<!--    <br/>-->
+<!--    <h5>Hm..interesting Features</h5>-->
+<!--    <button id="reserveGlassesBtn">Reserve Glasses</button>-->
+<!--    &nbsp;-->
+<!--    <input type="checkbox" id="clearFailStepChk" value="true"> Enable Clear-Fail Step-->
+
+
+  </div>
+
+
+  <hr style="width:80%; " />
+
+  <div class="gifex-input" style="text-align: center">
+
+    <h4>Settings</h4>
+
+
+    <div>
+      <h6>workspace is too small? Use Settings to change workspace width &amp; height.</h6>
+
+      <div class="gifex-input">
+        Size of Workspace :
+        &nbsp;width: <input size="5" style="Zwidth: 20%;" type="number" id="input_ws_w" value="" min="400" max="2000">
+        height: <input size="5" style="Zwidth: 20%;" type="number" id="input_ws_h" value="" min="400" max="2000">
+        &nbsp;
+        &nbsp;
+        <button id="regenWSBtn" >Regen workspace</button>
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+
+  <hr style="width:80%; "/>
+
+  <div w3-include-html="release_notes.html"></div>
+
+
+  <hr style="width:80%; "/>
+  <h4>Acknowledgements</h4>
+
+  <div style="text-align: left;display: inline-block;font-size:70%;">
+    Libraries
+    <ul>
+      <li><a target="_blank" href="https://github.com/cullus/gfSpinePiXi">gfSpinePiXi</a></li>
+      <li><a target="_blank" href="https://www.pixijs.com/">pixi.js</a></li>
+      <li><a target="_blank" href="https://github.com/pixijs/pixi-spine">pixi-spine</a></li>
+      <li><a target="_blank" href="https://github.com/jnordberg/gif.js">gif.js</a></li>
+      <li><a target="_blank" href="https://github.com/eligrey/FileSaver.js/">FileSaver.js</a></li>
+      <li><a target="_blank" href="https://spin.js.org/">spin.js</a></li>
+      <li><a target="_blank" href="https://github.com/g200kg/apngbuilder">APNGBuilder</a></li>
+      <li><a target="_blank" href="https://github.com/Stuk/jszip">JSZip</a></li>
+    </ul>
+    <!--  </div>-->
+    <!--  <div style="text-align: left;display: inline-block;font-size:70%;">-->
+    Special Thanks to
+    <ul>
+      <li>Chibi Club, The</li>
+    </ul>
+
+  </div>
+
+  <hr style="width:80%; "/>
+
+  <div style="">
+
+    <b>
+      Ask, and it shall be given to you.
+    </b>
+    <br/>
+    <br/>
+    <br/>
+  </div>
+
+
+
+</div>
+
+<script>
+
+
+  var ws_w = localStorage.getItem("ws_w") || 400;
+  var ws_h = localStorage.getItem("ws_h") || 400;
+  var ws_scale = localStorage.getItem("ws_scale") || 1.0;
+  ws_w = parseInt(ws_w);
+  ws_h = parseInt(ws_h);
+  ws_scale = parseFloat(ws_scale);
+
+  let spinner_opts = {
+    lines: 15, // The number of lines to draw
+    length: 20, // The length of each line
+    width: 6, // The line thickness
+    radius: 30, // The radius of the inner circle
+    scale: 0.75, // Scales overall size of the spinner
+    corners: 0.7, // Corner roundness (0..1)
+    color: '#000000', // CSS color or array of colors
+    fadeColor: 'transparent', // CSS color or array of colors
+    speed: 1, // Rounds per second
+    rotate: 0, // The rotation offset
+    animation: 'spinner-line-fade-quick', // The CSS animation name for the lines
+    direction: 1, // 1: clockwise, -1: counterclockwise
+    zIndex: 2e9, // The z-index (defaults to 2000000000)
+    className: 'spinner', // The CSS class to assign to the spinner
+    top: '0%', // Top position relative to parent
+    left: '0%', // Left position relative to parent
+    shadow: '0 0 1px transparent', // Box-shadow for the lines
+    position: 'relative' // Element positioning
+  };
+
+  var spinner;
+
+  function add_spinner() {
+    var target = document.getElementById('gifhere');
+    spinner = new Spinner(spinner_opts).spin(target);
+  }
+
+  function remove_spinner() {
+    spinner.stop();
+  }
+
+  window.URL = window.URL || window.webkitURL;
+
+  function _d() {
+    return chibi_deco.core._h.doll;
+  }
+
+  function _s() {
+    return _d().state;
+  }
+
+  function _sk() {
+    return _d().skeleton;
+  }
+
+  function _fb(n) {
+    return _sk().findBone(n);
+  }
+
+  function _fbi(n) {
+    return _sk().findBoneIndex(n);
+  }
+
+  function _fs(n) {
+    return _sk().findSlot(n);
+  }
+
+  function _fsi(n) {
+    return _sk().findSlotIndex(n);
+  }
+
+  function _bs() {
+    return _d().spineData.bones.map(a => a.name)
+  }
+
+  function _ss() {
+    return _d().spineData.slots.map(a => a.name)
+  }
+
+  function _fa(k) {
+    let d = _d().spineData;
+    return "number" === $.type(k) ? d.animations[k] : d.findAnimation(k);
+  }
+
+  function _lkbntl(idx, n) {
+    var bidx = _sk().findBoneIndex(n);
+    return _fa(idx).timelines.filter(t => t.boneIndex == bidx);
+  }
+
+  function _lksltl(idx, n) {
+    var sidx = _sk().findSlotIndex(n);
+    return _fa(idx).timelines.filter(t => t.slotIndex == sidx);
+  }
+
+  function _dcp(o) {
+    return JSON.parse(JSON.stringify(o));
+  }
+
+  var megane = null;
+
+  function wear_megane(idx) {
+    megane = chibi_deco.core._h.megane;
+    if (megane) {
+      _d().children[idx].addChild(megane);
+    }
+  }
+
+  var hold_skel_json = true;
+  var clearfail;
+
+  function http_get(url, callback) {
+    $.get(url, function (res) {
+      callback(res);
+    });
+  }
+
+  // function fn_skeleton_filter(skel, bones, slots, animations, skins) {return skel;}
+  function fn_slots_filter(slots, skel, bones) {}
+  function fn_bones_filter(bones, skel) {}
+  function fn_animations_filter(animations, skel, bones) {}
+  function fn_skins_filter(skins, skel) {}
+  function fn_cb_d(d) {
+     // cbx(d);
+  }
+
+  // t_sc = 4.2;
+  t_sc = 1.0;
+  // function t_w() { return parseInt(459/t_sc) }
+  // function t_h() { return parseInt(306/t_sc) }
+  function t_w() { return parseInt(96/t_sc) }
+  function t_h() { return parseInt(96/t_sc) }
+  // function t_w() { return parseInt(250/t_sc) }
+  // function t_h() { return parseInt(176/t_sc) }
+  s_x = 0;
+  s_y = 0;
+  b_x  = 0;
+  b_y  = 0;
+  s_r = 0;
+  // s_r = -30;
+  s_sx = 1;
+  s_sy = 1;
+  b_p = "armR3";
+  s_o = "armR3";
+
+  s_r = -90;
+  s_x = -10;
+  s_y = 20;
+  b_p = "root";
+  s_o = "armR4";
+  
+  function cbx(d) {
+    return;
+    try {
+
+      _fs("gun").currentSprite.visible = false;
+      let size = 6;
+      _fs("payoen_tube").currentSprite.filters = [new PIXI.filters.PixelateFilter(size)];
+      _fs("armR3").currentSprite.filters = [new PIXI.filters.PixelateFilter(size)];
+      _fs("armR2").currentSprite.filters = [new PIXI.filters.PixelateFilter(size)];
+      // _fs("armR4").currentMesh.filters = [new PIXI.filters.PixelateFilter(10)];
+      _fs("armL3").currentSprite.filters = [new PIXI.filters.PixelateFilter(size)];
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  Array.prototype.insert = function ( index, item ) {
+    this.splice( index, 0, item );
+  };
+
+  var kazari_data = {};
+  var kazari_txtr_names = [];
+  var kazari_txtr_obj = {};
+  var current_kazari = null;
+
+  function fn_cb_atlas_after_load(atlas) {
+    // return;
+    // (set! js/tube0 (js/PIXI.Sprite.fromImage. "img/test/commander_30040_0.png"))
+    const spine = PIXI.spine.SpineRuntime;
+    // var name = "txtr2";
+    // tubeTxtr = PIXI.BaseTexture.fromImage("img/test/commander_30040_0.png");
+    // tubeTxtr = PIXI.BaseTexture.fromImage("img/honkai.png");
+    // tubeTxtr = PIXI.BaseTexture.fromImage("img/test/10ga.png");
+    // tubeTxtr = PIXI.BaseTexture.fromImage("img/test/Commander_1620_0.png");
+    // tubeTxtr = PIXI.BaseTexture.fromImage("img/test/256px-Back_Scratcher.png");
+    // tubeTxtr.width = t_w;
+    // tubeTxtr.height = t_h;
+    // var master_sc = parseFloat($("#kazari_master_sc").val());
+    // if (isNaN(master_sc)) { master_sc = 1.0 }
+
+    for (var i = 0 ; i< kazari_txtr_names.length; i++ ) {
+
+      var name = kazari_txtr_names[i];
+      // var name = name0.replace(/\.png$/, "");
+
+      var tubeTxtr = kazari_txtr_obj[name];
+      var master_sc = tubeTxtr._deco_msc || 1.0;
+
+      // console.log("kazari n=", name, tubeTxtr);
+      // tubeTxtr.setR
+
+      var page = new spine.AtlasPage();
+      page.name = name;
+      var w0 = tubeTxtr.width;
+      var h0 = tubeTxtr.height;
+      var w = w0 * master_sc;
+      var h = h0 * master_sc;
+      tubeTxtr._deco_w = w;
+      tubeTxtr._deco_h = h;
+      page.width = w0;
+      page.height = h0;
+      page.uWrap = page.vWrap = spine.Atlas.TextureWrap.clampToEdge;
+      page.rendererObject = tubeTxtr;
+      atlas.pages.push(page);
+
+      // console.log(page);
+
+      var region = new spine.AtlasRegion();
+      region.name =  name ; //"payoen_tube";
+      region.page = page;
+      region.rotate = false;
+      region.width = w0;
+      region.height = h0;
+      region.u = region.v = 0;
+      region.u2 = region.v2 = 1;
+      region.x = region.y = 0;
+      region.originalWidth = w0;
+      region.originalHeight = h0;
+      region.offsetX = region.offsetY = 0;
+      region.index = -1;
+      region._deco_w = w;
+      region._deco_h = h;
+
+      atlas.regions.push(region);
+
+      // console.log(region);
+
+    }
+
+
+  }
+
+  // var base_w = 95;
+
+  function fn_skeleton_filter(skel, bones, slots, animations, skins) {
+
+    var skin = skins.default;
+
+    var kzr_names = {};
+    kazari_txtr_names.forEach(n => kzr_names[n] = true);
+
+    for (var i = 0; i < kazari_txtr_names.length; i++) {
+
+      var name = kazari_txtr_names[i];
+      // name = name.replace(/\.png$/, "");
+      var tubeTxtr = kazari_txtr_obj[name];
+      var master_sc = tubeTxtr._deco_msc || 1.0;
+
+      var width = tubeTxtr.width * master_sc;
+      var height = tubeTxtr.height * master_sc;
+      var ratio = height / width;
+
+      // console.log(skel);
+      // console.log(name, "msc=", master_sc, width, height);
+      // console.log(name, "msc=", master_sc, width, height, tubeTxtr);
+
+      var d = kazari_data[name] ||
+        {
+           "s_x": 0//-3 //18, //22,
+          ,"s_y": 0//-10//-14,
+          ,"s_r": 0 //-94,
+          ,"s_sx": 1,
+          "s_sy": 1,
+          "s_sc": 1,
+          "b_x": 0,
+          "b_y": 0,
+          "b_r": 0,
+          "w": width, //128,
+          "h": height, //128 * ratio,
+          // "b_p": "body", // "BodyBinder1"
+          // "b_p": "BodyBinder1",
+          // "s_o": "RHandLayer"
+        }
+      ;
+
+      d.w = width;
+      d.h = height;
+
+      kazari_data[name] = d;
+
+      // console.log("k", d);
+
+      var o = {};
+      o[name] = {
+        "type": "region",
+        "name": name, //"payoen_tube",
+        "path": name, //"payoen_tube",
+        "x": d.s_x || 0,
+        "y": d.s_y || 0,
+        "scaleX": d.s_sx || d.s_sc || 1,
+        "scaleY": d.s_sy || d.s_sc || 1,
+        "rotation": d.s_r || 0,
+        "width": d.w || width,
+        "height": d.h || height,
+        "color": "ffffffff"
+      }
+      ;
+      skin[name] = o;
+
+      var idx = 0;
+      var found = false;
+      for (idx = 0; idx < slots.length; idx++) {
+        var sl = slots[idx];
+        if (sl.name == d.s_o) {
+          found = true;
+          break;
+        }
+      }
+      // if (!found) {
+      //   for (idx = 0; idx < slots.length; idx++) {
+      //     var sl = slots[idx];
+      //     if (sl.name == "body") {
+      //       break;
+      //     }
+      //   }
+      // }
+      if (!found) {
+        idx = slots.length;
+      }
+
+      slots.insert(idx,
+        {
+          "name": name,
+          "bone": name,
+          "color": "ffffffff",
+          "attachment": name, //"payoen_tube",
+          "blend": "normal"
+        });
+
+      var pbn = d.b_p;
+
+      found = false;
+      for (idx = 0; idx < bones.length; idx++) {
+        var bn = bones[idx];
+        if (bn.name == pbn) {
+          found = true;
+          break;
+        }
+      }
+      if (!found && kzr_names[pbn]) {
+        found = true;
+      }
+      if (!found) { pbn = "root"; }
+      bones.push({
+        "name": name, //"payoen_tube",
+        "parent": pbn,
+        "x": d.b_x || 0,
+        "y": d.b_y || 0,
+        "scaleX": d.b_sc || d.s_sx || d.s_sc || 1,
+        "scaleY": d.b_sc || d.s_sy || d.s_sc || 1,
+        "rotation": d.b_r || 0,
+        "length": 30,
+        "flipX": false,
+        "flipY": false,
+        "inheritScale": false,
+        "inheritRotation": true,
+        "color": "9b9b9bff"
+      });
+
+    }
+
+    if (kazari_txtr_names.length > 0 ) {
+      fix_draw_order(
+        kazari_txtr_names, slots, animations
+      );
+    }
+
+    return skel;
+  }
+
+  function debugGeo(n) {
+    var bone = _fb(n);
+    function ff(bn) {
+      var p = bn.parent;
+      // if (!p) {
+      //   return;
+      // }
+      // console.log(bn.data.name
+      //   , bn.worldX, bn.worldY
+      //   , bn.worldX - p.worldX, bn.worldY - p.worldY
+      // , bn.worldRotation , bn.worldRotation - p.worldRotation
+      // )
+      console.log(bn.data.name, bn.x, bn.worldX
+        , bn.y, bn.worldY
+        , bn.rotation, bn.worldRotation
+      )
+      if (!p) {
+        return;
+      }
+      ff(p);
+    }
+
+    ff(bone);
+  }
+
+  var last_files = null;
+
+
+  // let spine_gif_version = "0.1.23.0-test";
+  let spine_gif_version = "deco_0.4.3";
+
+  function fix_draw_order() {}
+
+</script>
+
+<script src="js/compiled/chibi_deco.js?ts=deco_0.4.3"
+        type="text/javascript"></script>
+
+<script>
+
+  // PIXI.spine.SpineRuntime.Bone.yDown = false;
+/*
+bat0.anchor.set(0.38, 0.65);
+bat0.scale.set(0.28)
+bat0.rotation = Math.PI/180*-38 ;
+_fs("armR4").currentSprite.parent.addChildAt(bat0,0);
+axe0.scale.set(0.22);
+axe0.rotation = 1.4660765716752366;
+axe0.anchor.set ( 0.58, 0.58 );
+_fs("face").currentSprite.parent.addChild(axe0);
+
+*/
+
+
+w3.includeHTML();
+
+$(function() {
+  // $(".tdoll-parts-list").css("height", ws_h + "px");
+
+});
+function round(n) {
+  return Math.round(n * 10000)/10000;
+}
+function l2w(b, x,y) {
+  b.localToWorld(xy = [x,y]);
+  xy = xy.map( n => round(n));
+  return xy;
+}
+function w2l(b, x,y) {
+  b.worldToLocal(xy = [x,y]);
+  xy = xy.map( n => round(n));
+  return xy;
+}
+
+  packer = new MaxRectsPacker.MaxRectsPacker(4096,4096, 2, {allowRotation: false, smart:true, square:false});
+
+  SZJS_DEBUG = 1;
+</script>
+
+</body>
+</html>
