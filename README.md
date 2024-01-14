@@ -6,31 +6,9 @@
 recently I have no time to maintain them.
 
 
-## lein 
-install lein https://leiningen.org/ 
+## setup 
 
-
-## how to launch ( dev-mode )
-```shell 
-
-cd spine-gif-extract 
-lein figwheel dev
-
-```
-
-## build 
-
-```shell 
-
-cd spine-gif-extract 
-
-# clear the compiled folder
-rm -vrf resources/public/js/compiled/*
-
-# cljsbuild
-lein cljsbuild once min
-
-```
+- [dev-build.md](./dev-build.md "how to launch and build")
 
 ## license
 
